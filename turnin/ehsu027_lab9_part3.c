@@ -115,7 +115,7 @@ void BlinkingLEDSM() {
 }
 
 unsigned char SpeakerOnB = 0;
-unsigned long period = 0;
+//unsigned long period = 0;
 
 enum Speaker { S_Start, S_Off, S_On, S_Wait } S_State;
 void SpeakerSM() {
@@ -161,7 +161,7 @@ void SpeakerSM() {
 	}
 }
 
-enum ChangeFreq { CF_Start, CF_Wait, CF_Up, CF_Down, CF_WaitUp, CF_WaitDown } CF_State;
+/*enum ChangeFreq { CF_Start, CF_Wait, CF_Up, CF_Down, CF_WaitUp, CF_WaitDown } CF_State;
 void ChangeFreqSM() {
 	switch(CF_State) {
 		case CF_Start:
@@ -211,7 +211,7 @@ void ChangeFreqSM() {
 		break;
 	}
 }
-
+*/
 
 enum CombineLED { CL_Start, CL_Out } CL_State;
 void CombineLEDsSM() {
@@ -243,7 +243,7 @@ int main(void) {
 	BL_State = BL_Start;
 	CL_State = CL_Start;
 	S_State = S_Start;
-	CF_State = CF_Start;
+	//CF_State = CF_Start;
 	unsigned long BL_elapsedTime = 1000;
 	unsigned long TL_elapsedTime = 300;
 	unsigned long S_elapsedTime = 2;
@@ -259,7 +259,7 @@ int main(void) {
 	       	BlinkingLEDSM();
 		BL_elapsedTime = 0;
 	}
-	if (S_elapsedTime >= period) {
+	if (S_elapsedTime >= 2) {
 		SpeakerSM();
 		S_elapsedTime = 0;
 	}
@@ -268,7 +268,7 @@ int main(void) {
 	BL_elapsedTime += 1;
 	TL_elapsedTime += 1;
 	S_elapsedTime += 1;
-	ChangeFreqSM();
+	//ChangeFreqSM();
 	CombineLEDsSM();
     }
     return 1;
