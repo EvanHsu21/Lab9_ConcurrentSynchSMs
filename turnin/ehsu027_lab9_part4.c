@@ -175,7 +175,7 @@ void ChangeFreqSM() {
 				CF_State = CF_Down;
 			}
 			else if ((PINA & 0x03) == 0x02) {
-				if (period > 1) {
+				if (period > 2) {
 					period--;
 				}
 				CF_State = CF_Up;
